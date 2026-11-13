@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "art_17mdc306",
+  "status": "published",
+  "createdAt": "2026-11-13T06:29:58Z",
+  "updatedAt": "2026-11-13T06:29:58Z",
+  "authorId": "aut_h4x9k2m1",
+  "featured": false,
+  "topicIds": [
+    "top_writ0001"
+  ],
+  "tagIds": [
+    "tag_notes001"
+  ],
+  "translations": {
+    "ar": {
+      "status": "published",
+      "slug": "اختبار",
+      "title": "اختبار",
+      "excerpt": "اختبار",
+      "body": [
+        {
+          "id": "blk_gaqr7zmi",
+          "type": "heading",
+          "level": 2,
+          "text": "اختبار جاد"
+        },
+        {
+          "id": "blk_sqvppep1",
+          "type": "imagetext",
+          "mediaId": "med_a5bmbvot",
+          "text": "صورة معبرة للخشب"
+        }
+      ]
+    },
+    "en": {
+      "status": "draft",
+      "slug": "test1",
+      "title": "Test1",
+      "excerpt": "Test1",
+      "body": []
+    }
+  },
+  "publishedAt": "2026-11-13T06:36:00Z"
+}
