@@ -1,0 +1,1066 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://abdo.invalid/schemas/block.schema.json",
+  "title": "ArticleBlock",
+  "description": "One content block. Inline formatting inside text fields uses a small, safe markup: **bold**, *italic*, ++underline++, ~~strikethrough~~, ==highlight==, ^superscript^, ~subscript~, `code`, [label](url) and [^key] footnote references. Phase 3 added the checklist, definitions, code, table, gallery, compare, imagetext, factbox, timeline, stats, related, author, footnotes and references types, paragraph styles and per-block display options. Video, audio, PDF and embed blocks are not defined yet.",
+  "$defs": {
+    "inline": {
+      "description": "Text with inline markup.",
+      "type": "string",
+      "minLength": 1
+    },
+    "dir": {
+      "description": "Text direction override for mixed Arabic/English content.",
+      "enum": [
+        "auto",
+        "ltr",
+        "rtl"
+      ]
+    },
+    "textAlign": {
+      "enum": [
+        "start",
+        "center",
+        "end",
+        "justify"
+      ]
+    },
+    "display": {
+      "description": "Presentation options from a fixed set (no arbitrary CSS), so every block stays on the design system.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "spacing": {
+          "enum": [
+            "compact",
+            "normal",
+            "relaxed"
+          ]
+        },
+        "tone": {
+          "enum": [
+            "none",
+            "subtle",
+            "accent",
+            "inverse"
+          ]
+        },
+        "width": {
+          "enum": [
+            "narrow",
+            "normal",
+            "wide",
+            "full"
+          ]
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "type"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/id_block"
+    },
+    "type": {
+      "enum": [
+        "paragraph",
+        "heading",
+        "quote",
+        "list",
+        "image",
+        "callout",
+        "divider",
+        "checklist",
+        "definitions",
+        "code",
+        "table",
+        "gallery",
+        "compare",
+        "imagetext",
+        "factbox",
+        "timeline",
+        "stats",
+        "related",
+        "author",
+        "footnotes",
+        "references"
+      ]
+    },
+    "hidden": {
+      "description": "Visibility control: hidden blocks are kept in the data but never rendered.",
+      "type": "boolean"
+    },
+    "display": {
+      "$ref": "#/$defs/display"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "paragraph"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "text": {
+            "$ref": "#/$defs/inline"
+          },
+          "style": {
+            "description": "Reusable editorial paragraph style.",
+            "enum": [
+              "body",
+              "intro",
+              "lead",
+              "standfirst",
+              "caption",
+              "byline",
+              "small",
+              "highlight"
+            ]
+          },
+          "dropCap": {
+            "type": "boolean"
+          },
+          "smallCaps": {
+            "type": "boolean"
+          },
+          "align": {
+            "$ref": "#/$defs/textAlign"
+          },
+          "dir": {
+            "$ref": "#/$defs/dir"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "heading"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "level": {
+            "description": "2-6. Level 1 is reserved for the page title.",
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 6
+          },
+          "text": {
+            "$ref": "#/$defs/inline"
+          },
+          "align": {
+            "$ref": "#/$defs/textAlign"
+          },
+          "dir": {
+            "$ref": "#/$defs/dir"
+          }
+        },
+        "required": [
+          "level",
+          "text"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "quote"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "text": {
+            "$ref": "#/$defs/inline"
+          },
+          "cite": {
+            "$ref": "#/$defs/inline"
+          },
+          "variant": {
+            "enum": [
+              "block",
+              "pull"
+            ]
+          },
+          "dir": {
+            "$ref": "#/$defs/dir"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "list"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "ordered": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/inline"
+            },
+            "description": "One item per entry. A nested item starts with two spaces per level (at most 3 levels below the first); an item can be at most one level deeper than the item above it."
+          },
+          "dir": {
+            "$ref": "#/$defs/dir"
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "image"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "mediaId": {
+            "$ref": "common.schema.json#/$defs/id_media"
+          },
+          "caption": {
+            "$ref": "#/$defs/inline"
+          },
+          "alt": {
+            "description": "Overrides the alt text stored on the media asset for this language.",
+            "type": "string",
+            "minLength": 1
+          },
+          "size": {
+            "enum": [
+              "inline",
+              "wide",
+              "full"
+            ]
+          },
+          "aspect": {
+            "enum": [
+              "auto",
+              "1:1",
+              "4:3",
+              "3:2",
+              "16:9",
+              "2:3"
+            ]
+          },
+          "border": {
+            "enum": [
+              "none",
+              "thin",
+              "thick"
+            ]
+          },
+          "radius": {
+            "enum": [
+              "none",
+              "sm",
+              "lg",
+              "round"
+            ]
+          }
+        },
+        "required": [
+          "mediaId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "callout"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "tone": {
+            "enum": [
+              "note",
+              "tip",
+              "warning"
+            ]
+          },
+          "title": {
+            "$ref": "#/$defs/inline"
+          },
+          "text": {
+            "$ref": "#/$defs/inline"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "divider"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "checklist"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "title": {
+            "$ref": "#/$defs/inline"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "text": {
+                  "$ref": "#/$defs/inline"
+                },
+                "checked": {
+                  "type": "boolean"
+                },
+                "level": {
+                  "description": "Indentation: 0 is the top level, at most 3. An item can be at most one level deeper than the item above it.",
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "definitions"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "term",
+                "definition"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "term": {
+                  "$ref": "#/$defs/inline"
+                },
+                "definition": {
+                  "$ref": "#/$defs/inline"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "code"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "text": {
+            "description": "Literal code. Shown as written, never interpreted.",
+            "type": "string",
+            "minLength": 1
+          },
+          "language": {
+            "description": "A label such as js, python or bash. Not used for highlighting.",
+            "type": "string",
+            "pattern": "^[A-Za-z0-9+#._-]{1,24}$"
+          },
+          "caption": {
+            "$ref": "#/$defs/inline"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "table"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "caption": {
+            "$ref": "#/$defs/inline"
+          },
+          "header": {
+            "description": "Treat the first row as column headings. Default true.",
+            "type": "boolean"
+          },
+          "align": {
+            "description": "Alignment per column.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "start",
+                "center",
+                "end"
+              ]
+            }
+          },
+          "rows": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "rows"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "gallery"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "caption": {
+            "$ref": "#/$defs/inline"
+          },
+          "columns": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 4
+          },
+          "ratio": {
+            "enum": [
+              "auto",
+              "1:1",
+              "4:3",
+              "3:2",
+              "16:9",
+              "2:3"
+            ]
+          },
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": [
+                "mediaId"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "mediaId": {
+                  "$ref": "common.schema.json#/$defs/id_media"
+                },
+                "caption": {
+                  "$ref": "#/$defs/inline"
+                },
+                "alt": {
+                  "description": "Overrides the alt text stored on the media asset for this language.",
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "maxItems": 24
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "compare"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "beforeId": {
+            "$ref": "common.schema.json#/$defs/id_media"
+          },
+          "afterId": {
+            "$ref": "common.schema.json#/$defs/id_media"
+          },
+          "beforeLabel": {
+            "$ref": "#/$defs/inline"
+          },
+          "afterLabel": {
+            "$ref": "#/$defs/inline"
+          },
+          "beforeAlt": {
+            "description": "Overrides the alt text stored on the media asset for this language.",
+            "type": "string",
+            "minLength": 1
+          },
+          "afterAlt": {
+            "description": "Overrides the alt text stored on the media asset for this language.",
+            "type": "string",
+            "minLength": 1
+          },
+          "caption": {
+            "$ref": "#/$defs/inline"
+          }
+        },
+        "required": [
+          "beforeId",
+          "afterId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "imagetext"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "mediaId": {
+            "$ref": "common.schema.json#/$defs/id_media"
+          },
+          "side": {
+            "enum": [
+              "start",
+              "end"
+            ]
+          },
+          "text": {
+            "$ref": "#/$defs/inline"
+          },
+          "caption": {
+            "$ref": "#/$defs/inline"
+          },
+          "alt": {
+            "description": "Overrides the alt text stored on the media asset for this language.",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "mediaId",
+          "text"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "factbox"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "title": {
+            "$ref": "#/$defs/inline"
+          },
+          "note": {
+            "$ref": "#/$defs/inline"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "label",
+                "value"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "label": {
+                  "$ref": "#/$defs/inline"
+                },
+                "value": {
+                  "$ref": "#/$defs/inline"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "timeline"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "title": {
+            "$ref": "#/$defs/inline"
+          },
+          "events": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "title"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "date": {
+                  "$ref": "#/$defs/inline"
+                },
+                "title": {
+                  "$ref": "#/$defs/inline"
+                },
+                "text": {
+                  "$ref": "#/$defs/inline"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "events"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "stats"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "value",
+                "label"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 24
+                },
+                "label": {
+                  "$ref": "#/$defs/inline"
+                },
+                "note": {
+                  "$ref": "#/$defs/inline"
+                }
+              }
+            },
+            "maxItems": 6
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "related"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "title": {
+            "$ref": "#/$defs/inline"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "kind",
+                "id"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "article",
+                    "project"
+                  ]
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^(art|prj)_[0-9a-z]{8}$"
+                }
+              }
+            },
+            "maxItems": 6
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "author"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "note": {
+            "$ref": "#/$defs/inline"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "footnotes"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "title": {
+            "$ref": "#/$defs/inline"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "key",
+                "text"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "key": {
+                  "description": "Referenced in text as [^key].",
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9-]{0,19}$"
+                },
+                "text": {
+                  "$ref": "#/$defs/inline"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "references"
+          }
+        }
+      },
+      "then": {
+        "additionalProperties": false,
+        "properties": {
+          "id": true,
+          "type": true,
+          "hidden": true,
+          "display": true,
+          "title": {
+            "$ref": "#/$defs/inline"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "text": {
+                  "$ref": "#/$defs/inline"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?://\\S+$"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    }
+  ]
+}

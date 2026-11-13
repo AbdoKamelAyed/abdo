@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "art_built001",
+  "status": "published",
+  "createdAt": "2026-10-25T10:00:00+02:00",
+  "updatedAt": "2026-10-27T10:30:00+02:00",
+  "publishedAt": "2026-10-27T10:30:00+02:00",
+  "authorId": "aut_h4x9k2m1",
+  "template": "long-read",
+  "topicIds": ["top_tech0001"],
+  "tagIds": ["tag_syst0001", "tag_flow0001"],
+  "coverMediaId": "med_9f3k2a03",
+  "sample": true,
+  "translations": {
+    "en": {
+      "status": "published",
+      "slug": "how-this-site-is-built",
+      "title": "How this site is built",
+      "subtitle": "A short tour of the static-first architecture",
+      "excerpt": "JSON in, plain HTML out: a look at the three layers behind the site and why pages are generated ahead of time.",
+      "coverAlt": "White concentric circles on a dark grey background",
+      "body": [
+        { "id": "blk_b1en0001", "type": "paragraph", "style": "lead", "text": "ABDO is a static site. Content lives in JSON files; a small build script turns them into ordinary HTML pages that any host can serve and any crawler can read." },
+        { "id": "blk_b1en0002", "type": "heading", "level": 2, "text": "Three layers" },
+        { "id": "blk_b1en0003", "type": "list", "items": [
+          "**Content** — JSON files, validated against schemas before every build.",
+          "**Generator** — a Node.js script with no third-party dependencies.",
+          "**Presentation** — one stylesheet generated from design tokens, with separate settings for each language."
+        ] },
+        { "id": "blk_b1en0004", "type": "heading", "level": 2, "text": "Why static first" },
+        { "id": "blk_b1en0005", "type": "paragraph", "text": "Pages are generated ahead of time, so they load quickly, work without JavaScript and stay readable by search engines and assistive tools. JavaScript is used only for small conveniences such as remembering your light or dark preference." },
+        { "id": "blk_b1en0006", "type": "quote", "text": "A page that needs no script to be read is a page that is hard to break.", "variant": "block" },
+        { "id": "blk_b1en0007", "type": "callout", "tone": "note", "title": "What exists today", "text": "This first phase covers the public site. The admin dashboard, the editor and the publishing workflow come in later phases." }
+      ]
+    },
+    "ar": {
+      "status": "published",
+      "slug": "كيف-بني-هذا-الموقع",
+      "title": "كيف بُني هذا الموقع",
+      "subtitle": "جولة قصيرة في بنيته الساكنة أولًا",
+      "excerpt": "ملفات JSON تدخل وصفحات HTML عادية تخرج: نظرة على الطبقات الثلاث خلف الموقع، ولماذا تُولَّد الصفحات مسبقًا.",
+      "coverAlt": "دوائر متحدة المركز بيضاء على خلفية رمادية داكنة",
+      "body": [
+        { "id": "blk_b1ar0001", "type": "paragraph", "style": "lead", "text": "«عبده» موقع ساكن. يعيش المحتوى في ملفات JSON، ويحوّلها نص برمجي صغير إلى صفحات HTML عادية يستطيع أي مستضيف تقديمها وأي زاحف قراءتها." },
+        { "id": "blk_b1ar0002", "type": "heading", "level": 2, "text": "ثلاث طبقات" },
+        { "id": "blk_b1ar0003", "type": "list", "items": [
+          "**المحتوى** — ملفات JSON يجري التحقق منها وفق مخططات قبل كل بناء.",
+          "**المولِّد** — نص برمجي بلغة Node.js بلا أي اعتماد على حزم خارجية.",
+          "**العرض** — ورقة أنماط واحدة تُولَّد من متغيرات التصميم، مع إعدادات منفصلة لكل لغة."
+        ] },
+        { "id": "blk_b1ar0004", "type": "heading", "level": 2, "text": "لماذا الساكن أولًا؟" },
+        { "id": "blk_b1ar0005", "type": "paragraph", "text": "تُولَّد الصفحات مسبقًا، فتُحمَّل بسرعة، وتعمل دون جافاسكربت، وتبقى مقروءة لمحركات البحث وأدوات الوصول. ولا تُستخدم جافاسكربت إلا في تسهيلات صغيرة مثل تذكّر اختيارك للمظهر الفاتح أو الداكن." },
+        { "id": "blk_b1ar0006", "type": "quote", "text": "الصفحة التي تُقرأ دون نص برمجي صفحة يصعب كسرها.", "variant": "block" },
+        { "id": "blk_b1ar0007", "type": "callout", "tone": "note", "title": "ما هو موجود اليوم", "text": "تغطي هذه المرحلة الأولى الموقع العام. أما لوحة الإدارة والمحرر وسير النشر فتأتي في مراحل لاحقة." }
+      ]
+    }
+  }
+}

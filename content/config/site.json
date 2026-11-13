@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "name": { "ar": "عبده", "en": "ABDO" },
+  "tagline": { "ar": "منشور رقمي ومعرفة شخصية", "en": "A personal digital publication" },
+  "description": {
+    "ar": "موقع شخصي ومجلة رقمية: مقالات وأعمال وأفكار في مكان واحد.",
+    "en": "A personal website and digital magazine: articles, projects and ideas in one place."
+  },
+  "canonicalDomain": "https://example.github.io/abdo",
+  "timezone": "Africa/Cairo",
+  "sampleBanner": true,
+  "updatedAt": "2026-11-03T09:00:00+02:00"
+}

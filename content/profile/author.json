@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "id": "aut_h4x9k2m1",
+  "status": "published",
+  "createdAt": "2026-10-01T09:00:00+02:00",
+  "updatedAt": "2026-11-03T09:00:00+02:00",
+  "sample": true,
+  "links": [],
+  "translations": {
+    "ar": {
+      "name": "عبده",
+      "headline": "عنوان تجريبي — عدّل الملف content/profile/author.json",
+      "summary": "نبذة تجريبية قصيرة عن صاحب الموقع. استبدلها بنصك الخاص.",
+      "biography": [
+        { "id": "blk_au0ar001", "type": "paragraph", "style": "lead", "text": "هذه صفحة تعريفية تجريبية. كل ما فيها مؤقت ومكانه أن يُستبدل بسيرتك الحقيقية." },
+        { "id": "blk_au0ar002", "type": "paragraph", "text": "يمكن أن تتضمن السيرة فقرات متعددة، وعناوين، وقوائم، وصورًا. وتُحفظ كلها بوصفها بيانات منظمة داخل الملف نفسه." }
+      ]
+    },
+    "en": {
+      "name": "Abdo",
+      "headline": "Sample headline — edit content/profile/author.json",
+      "summary": "A short sample introduction to the owner of the site. Replace it with your own words.",
+      "biography": [
+        { "id": "blk_au0en001", "type": "paragraph", "style": "lead", "text": "This is a sample profile page. Everything on it is temporary and meant to be replaced with your real story." },
+        { "id": "blk_au0en002", "type": "paragraph", "text": "A biography can contain several paragraphs, headings, lists and images. All of it is stored as structured data in the same file." }
+      ]
+    }
+  },
+  "experience": [
+    {
+      "id": "exp_sample01", "visibility": "public", "startDate": "2022-01", "sample": true,
+      "translations": {
+        "ar": { "title": "دور تجريبي", "organization": "جهة تجريبية", "summary": "وصف مختصر للمهام والإنجازات في هذا الدور." },
+        "en": { "title": "Sample role", "organization": "Sample organization", "summary": "A short description of the work and achievements in this role." }
+      }
+    }
+  ],
+  "education": [
+    {
+      "id": "edu_sample01", "visibility": "public", "startDate": "2016-09", "endDate": "2020-06", "sample": true,
+      "translations": {
+        "ar": { "title": "درجة علمية تجريبية", "organization": "مؤسسة تعليمية تجريبية" },
+        "en": { "title": "Sample degree", "organization": "Sample institution" }
+      }
+    }
+  ],
+  "skills": [
+    { "id": "skl_sample01", "visibility": "public", "sample": true, "translations": { "ar": { "name": "الكتابة" }, "en": { "name": "Writing" } } },
+    { "id": "skl_sample02", "visibility": "public", "sample": true, "translations": { "ar": { "name": "البحث" }, "en": { "name": "Research" } } },
+    { "id": "skl_sample03", "visibility": "public", "sample": true, "translations": { "ar": { "name": "التفكير النظمي" }, "en": { "name": "Systems thinking" } } }
+  ],
+  "customSections": [
+    {
+      "id": "cus_sample01", "visibility": "public", "sample": true,
+      "translations": {
+        "ar": { "title": "التركيز الحالي", "body": [ { "id": "blk_cu0ar001", "type": "paragraph", "text": "قسم مخصص تجريبي. يمكنك إضافة أي عدد من الأقسام المخصصة، مثل الفلسفة الشخصية أو الأهداف أو الإنجازات." } ] },
+        "en": { "title": "Current focus", "body": [ { "id": "blk_cu0en001", "type": "paragraph", "text": "A sample custom section. You can add any number of custom sections, such as personal philosophy, goals or achievements." } ] }
+      }
+    },
+    {
+      "id": "cus_private1", "visibility": "private", "sample": true,
+      "translations": {
+        "ar": { "title": "ملاحظة خاصة", "body": [ { "id": "blk_cp0ar001", "type": "paragraph", "text": "هذا القسم خاص ولا يظهر في الموقع المنشور." } ] },
+        "en": { "title": "Private note", "body": [ { "id": "blk_cp0en001", "type": "paragraph", "text": "This section is private and never appears on the published site." } ] }
+      }
+    }
+  ]
+}

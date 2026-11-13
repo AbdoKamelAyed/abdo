@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://abdo.invalid/schemas/common.schema.json",
+  "title": "ABDO common definitions",
+  "description": "Shared building blocks. Every other schema references these so rules (ID formats, slugs, languages) live in exactly one place.",
+  "$defs": {
+    "schemaVersion": {
+      "description": "Data-format version of the file. Bump it (and add a migration, see docs/data-model.md) when a change is not backward compatible.",
+      "type": "integer",
+      "const": 1
+    },
+    "lang": {
+      "description": "A language code defined in content/config/languages.json, e.g. ar or en.",
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "slug": {
+      "description": "URL segment. Lowercase letters of any script (Arabic is fine), digits, single hyphens between words.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[\\p{Ll}\\p{Lo}\\p{N}]+(-[\\p{Ll}\\p{Lo}\\p{N}]+)*$"
+    },
+    "dateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "yearMonth": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hexColor": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+    },
+    "cssLength": {
+      "description": "A CSS length such as 18px, 1.5rem or 72rem.",
+      "type": "string",
+      "pattern": "^[0-9]+(\\.[0-9]+)?(px|rem|em|ch|vw|%)$"
+    },
+    "contentStatus": {
+      "description": "Editorial workflow state. Only \"published\" content is public; \"scheduled\" content becomes public by itself at its publication date (see docs/publishing-workflow.md). The full default workflow is listed so it can be used from day one; custom statuses arrive with the Editorial Studio (Phase 3).",
+      "enum": [
+        "idea",
+        "outline",
+        "draft",
+        "editing",
+        "fact-checking",
+        "ready",
+        "scheduled",
+        "published",
+        "archived"
+      ]
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "id_article": {
+      "type": "string",
+      "pattern": "^art_[0-9a-z]{8}$"
+    },
+    "id_project": {
+      "type": "string",
+      "pattern": "^prj_[0-9a-z]{8}$"
+    },
+    "id_topic": {
+      "type": "string",
+      "pattern": "^top_[0-9a-z]{8}$"
+    },
+    "id_tag": {
+      "type": "string",
+      "pattern": "^tag_[0-9a-z]{8}$"
+    },
+    "id_media": {
+      "type": "string",
+      "pattern": "^med_[0-9a-z]{8}$"
+    },
+    "id_author": {
+      "type": "string",
+      "pattern": "^aut_[0-9a-z]{8}$"
+    },
+    "id_block": {
+      "type": "string",
+      "pattern": "^blk_[0-9a-z]{8}$"
+    },
+    "localized": {
+      "description": "A string per language, e.g. { \"ar\": \"...\", \"en\": \"...\" }.",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/lang"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "robots": {
+      "enum": [
+        "index",
+        "noindex"
+      ]
+    },
+    "seo": {
+      "description": "Optional per-page search/social overrides. Anything left out is derived automatically from the content.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "canonicalUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ogMediaId": {
+          "$ref": "#/$defs/id_media"
+        },
+        "robots": {
+          "$ref": "#/$defs/robots"
+        }
+      }
+    },
+    "typographyOverride": {
+      "description": "Reading typography for one page only, on top of its language's settings. Every field is optional; ranges keep the page readable. Drawn with classes at 5% / 0.1 / 2rem steps.",
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "fontScale": {
+          "description": "Body text size as a percentage of the language's base size.",
+          "type": "integer",
+          "minimum": 85,
+          "maximum": 130
+        },
+        "lineHeight": {
+          "description": "Line height of the body text.",
+          "type": "number",
+          "minimum": 1.2,
+          "maximum": 2.2
+        },
+        "measure": {
+          "description": "Width of the text column, in rem.",
+          "type": "integer",
+          "minimum": 28,
+          "maximum": 60
+        },
+        "headingWeight": {
+          "description": "Weight of the headings.",
+          "type": "integer",
+          "enum": [
+            400,
+            500,
+            600,
+            700,
+            800,
+            900
+          ]
+        }
+      }
+    }
+  }
+}

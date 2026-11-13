@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://abdo.invalid/schemas/profile.schema.json",
+  "title": "AuthorProfile",
+  "description": "The owner's profile and CV data at content/profile/author.json. Experience, education, skills and custom sections each carry their own ID and visibility so the Phase 2 CV manager can edit them individually.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "status", "createdAt", "updatedAt", "translations"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "$ref": "common.schema.json#/$defs/schemaVersion" },
+    "id": { "$ref": "common.schema.json#/$defs/id_author" },
+    "status": { "$ref": "common.schema.json#/$defs/contentStatus" },
+    "createdAt": { "$ref": "common.schema.json#/$defs/dateTime" },
+    "updatedAt": { "$ref": "common.schema.json#/$defs/dateTime" },
+    "photoMediaId": { "$ref": "common.schema.json#/$defs/id_media" },
+    "sample": { "type": "boolean" },
+    "links": {
+      "description": "Public contact and social links. Only list what you want published.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "label", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "enum": ["email", "social", "website"] },
+          "label": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "translations": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "common.schema.json#/$defs/lang" },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "headline", "summary"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "headline": { "type": "string", "minLength": 1, "maxLength": 200 },
+          "summary": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "biography": { "type": "array", "items": { "$ref": "block.schema.json" } }
+        }
+      }
+    },
+    "experience": { "type": "array", "items": { "$ref": "#/$defs/timelineEntry" } },
+    "education": { "type": "array", "items": { "$ref": "#/$defs/timelineEntry" } },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "visibility", "translations"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^skl_[0-9a-z]{8}$" },
+          "visibility": { "$ref": "common.schema.json#/$defs/visibility" },
+          "sample": { "type": "boolean" },
+          "translations": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": { "$ref": "common.schema.json#/$defs/lang" },
+            "additionalProperties": {
+              "type": "object",
+              "required": ["name"],
+              "additionalProperties": false,
+              "properties": { "name": { "type": "string", "minLength": 1 } }
+            }
+          }
+        }
+      }
+    },
+    "customSections": {
+      "description": "Unlimited extra sections (philosophy, current focus, achievements ...).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "visibility", "translations"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^cus_[0-9a-z]{8}$" },
+          "visibility": { "$ref": "common.schema.json#/$defs/visibility" },
+          "sample": { "type": "boolean" },
+          "translations": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": { "$ref": "common.schema.json#/$defs/lang" },
+            "additionalProperties": {
+              "type": "object",
+              "required": ["title", "body"],
+              "additionalProperties": false,
+              "properties": {
+                "title": { "type": "string", "minLength": 1 },
+                "body": { "type": "array", "minItems": 1, "items": { "$ref": "block.schema.json" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "timelineEntry": {
+      "type": "object",
+      "required": ["id", "visibility", "startDate", "translations"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^(exp|edu)_[0-9a-z]{8}$" },
+        "visibility": { "$ref": "common.schema.json#/$defs/visibility" },
+        "startDate": { "$ref": "common.schema.json#/$defs/yearMonth" },
+        "endDate": { "description": "Leave out for \"present\".", "$ref": "common.schema.json#/$defs/yearMonth" },
+        "sample": { "type": "boolean" },
+        "translations": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "$ref": "common.schema.json#/$defs/lang" },
+          "additionalProperties": {
+            "type": "object",
+            "required": ["title", "organization"],
+            "additionalProperties": false,
+            "properties": {
+              "title": { "type": "string", "minLength": 1 },
+              "organization": { "type": "string", "minLength": 1 },
+              "summary": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "prj_archive1",
+  "status": "published",
+  "createdAt": "2026-09-01T09:00:00+02:00",
+  "updatedAt": "2026-09-05T09:00:00+02:00",
+  "publishedAt": "2026-09-05T09:00:00+02:00",
+  "featured": true,
+  "projectStatus": "completed",
+  "startDate": "2026-03-01",
+  "endDate": "2026-08-30",
+  "topicIds": ["top_make0001", "top_learn001"],
+  "tagIds": ["tag_syst0001", "tag_read0001"],
+  "coverMediaId": "med_9f3k2a03",
+  "galleryMediaIds": ["med_9f3k2a04"],
+  "tools": ["JSON", "Static HTML"],
+  "relatedArticleIds": ["art_built001", "art_readar01"],
+  "sample": true,
+  "translations": {
+    "en": {
+      "status": "published",
+      "slug": "personal-reading-archive",
+      "title": "Personal reading archive",
+      "subtitle": "A searchable record of everything read",
+      "summary": "A sample project: a small archive that stores notes about books and articles and links them by topic.",
+      "role": "Designer and builder",
+      "responsibilities": ["Define the data model", "Build the pages", "Write the import script"],
+      "challenge": "Notes were scattered across notebooks and files, and none of them could be searched.",
+      "process": "The work started with an inventory of what existed, then a single field shared by every note, then a trial run on twenty notes before importing the rest.",
+      "solution": "One JSON file per note, static pages generated from them, and a small search index.",
+      "outcome": "Finding an old note became much easier.",
+      "links": [{ "label": "Source code (example link)", "url": "https://example.com/reading-archive" }],
+      "coverAlt": "White concentric circles on a dark grey background"
+    },
+    "ar": {
+      "status": "published",
+      "slug": "أرشيف-القراءة-الشخصي",
+      "title": "أرشيف القراءة الشخصي",
+      "subtitle": "سجل قابل للبحث لكل ما قُرئ",
+      "summary": "مشروع تجريبي: أرشيف صغير يحفظ ملاحظات عن الكتب والمقالات ويربطها بالمواضيع.",
+      "role": "المصمم والمنفّذ",
+      "responsibilities": ["تحديد نموذج البيانات", "بناء الصفحات", "كتابة نص الاستيراد"],
+      "challenge": "كانت الملاحظات مبعثرة بين دفاتر وملفات، ولم يكن البحث فيها ممكنًا.",
+      "process": "بدأ العمل بجرد ما هو موجود، ثم اختيار حقل واحد مشترك بين كل الملاحظات، ثم تجربة النموذج على عشرين ملاحظة قبل استيراد البقية.",
+      "solution": "ملف JSON واحد لكل ملاحظة، وصفحات ثابتة تُولَّد منها، وفهرس بحث صغير.",
+      "outcome": "صار العثور على أي ملاحظة قديمة أسهل بكثير.",
+      "links": [{ "label": "الشيفرة المصدرية (رابط مثال)", "url": "https://example.com/reading-archive" }],
+      "coverAlt": "دوائر متحدة المركز بيضاء على خلفية رمادية داكنة"
+    }
+  }
+}

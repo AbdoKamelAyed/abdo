@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "prj_planner1",
+  "status": "published",
+  "createdAt": "2026-10-02T09:00:00+02:00",
+  "updatedAt": "2026-10-10T09:00:00+02:00",
+  "publishedAt": "2026-10-10T09:00:00+02:00",
+  "projectStatus": "in-progress",
+  "startDate": "2026-09-15",
+  "topicIds": ["top_tech0001", "top_make0001"],
+  "tagIds": ["tag_flow0001", "tag_desgn001"],
+  "coverMediaId": "med_9f3k2a01",
+  "tools": ["Spreadsheet", "Calendar"],
+  "sample": true,
+  "translations": {
+    "en": {
+      "status": "published",
+      "slug": "home-maintenance-planner",
+      "title": "Home maintenance planner",
+      "subtitle": "A clear schedule for recurring tasks",
+      "summary": "A sample project: a simple tool that reminds you of recurring maintenance tasks and records which ones were done.",
+      "role": "Solo builder",
+      "responsibilities": ["Collect the list of tasks", "Design the reminder screen"],
+      "challenge": "Recurring tasks are forgotten because they only become visible when something breaks.",
+      "process": "Tasks were grouped by how often they repeat, then ranked by importance.",
+      "solution": "A table that shows upcoming tasks and the date each one was last completed.",
+      "outcome": "The project is still in progress.",
+      "coverAlt": "A white half circle above a dark horizon with shrinking lines"
+    },
+    "ar": {
+      "status": "published",
+      "slug": "مخطط-صيانة-المنزل",
+      "title": "مخطط صيانة المنزل",
+      "subtitle": "جدول واضح للمهام الدورية",
+      "summary": "مشروع تجريبي: أداة بسيطة تذكّر بمهام الصيانة الدورية وتسجّل ما أُنجز منها.",
+      "role": "منفّذ منفرد",
+      "responsibilities": ["جمع قائمة المهام", "تصميم شاشة التذكير"],
+      "challenge": "تُنسى المهام الدورية لأنها لا تظهر إلا عند حدوث عطل.",
+      "process": "جُمعت المهام بحسب تكرارها، ثم رُتّبت بحسب أهميتها.",
+      "solution": "جدول يعرض المهام القادمة وتاريخ آخر إنجاز لكل منها.",
+      "outcome": "المشروع ما زال قيد التنفيذ.",
+      "coverAlt": "دائرة بيضاء نصفية فوق أفق داكن مع خطوط متناقصة"
+    }
+  }
+}

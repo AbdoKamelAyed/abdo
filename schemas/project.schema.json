@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://abdo.invalid/schemas/project.schema.json",
+  "title": "Project",
+  "description": "One file per portfolio project at content/projects/<id>.json. Not tied to any profession or industry.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "status", "createdAt", "updatedAt", "topicIds", "translations"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "$ref": "common.schema.json#/$defs/schemaVersion" },
+    "id": { "$ref": "common.schema.json#/$defs/id_project" },
+    "status": { "$ref": "common.schema.json#/$defs/contentStatus" },
+    "createdAt": { "$ref": "common.schema.json#/$defs/dateTime" },
+    "updatedAt": { "$ref": "common.schema.json#/$defs/dateTime" },
+    "publishedAt": { "$ref": "common.schema.json#/$defs/dateTime" },
+    "featured": { "type": "boolean" },
+    "projectStatus": { "enum": ["planned", "in-progress", "completed", "paused"] },
+    "startDate": { "$ref": "common.schema.json#/$defs/date" },
+    "endDate": { "$ref": "common.schema.json#/$defs/date" },
+    "topicIds": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/id_topic" } },
+    "tagIds": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/id_tag" } },
+    "coverMediaId": { "$ref": "common.schema.json#/$defs/id_media" },
+    "galleryMediaIds": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/id_media" } },
+    "tools": { "description": "Tools and technologies (language-neutral names).", "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "relatedArticleIds": { "description": "The link is stored here only; the article page derives the reverse link at build time.", "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/id_article" } },
+    "sample": { "type": "boolean" },
+    "typography": { "$ref": "common.schema.json#/$defs/typographyOverride" },
+    "internalNotes": { "description": "Notes for the owner. Never rendered, never in the built site; stored in the repository, so no secrets.", "type": "string", "minLength": 1, "maxLength": 4000 },
+    "translations": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "common.schema.json#/$defs/lang" },
+      "additionalProperties": { "$ref": "#/$defs/translation" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "required": ["status"], "properties": { "status": { "enum": ["published", "scheduled"] } } },
+      "then": { "required": ["publishedAt"] }
+    }
+  ],
+  "$defs": {
+    "translation": {
+      "type": "object",
+      "required": ["status", "slug", "title", "summary"],
+      "additionalProperties": false,
+      "properties": {
+        "status": { "$ref": "common.schema.json#/$defs/contentStatus" },
+        "slug": { "$ref": "common.schema.json#/$defs/slug" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "subtitle": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "role": { "type": "string", "minLength": 1 },
+        "responsibilities": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "challenge": { "description": "Case-study text. Separate paragraphs with a blank line.", "type": "string", "minLength": 1 },
+        "process": { "type": "string", "minLength": 1 },
+        "solution": { "type": "string", "minLength": 1 },
+        "outcome": { "type": "string", "minLength": 1 },
+        "body": { "type": "array", "items": { "$ref": "block.schema.json" } },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "url"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string", "minLength": 1 },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "coverAlt": { "type": "string", "minLength": 1 },
+        "seo": { "$ref": "common.schema.json#/$defs/seo" }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "tag_notes001", "status": "published", "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00", "sample": true,
+      "translations": { "ar": { "name": "ملاحظات", "slug": "ملاحظات" }, "en": { "name": "Notes", "slug": "notes" } }
+    },
+    {
+      "id": "tag_flow0001", "status": "published", "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00", "sample": true,
+      "translations": { "ar": { "name": "سير العمل", "slug": "سير-العمل" }, "en": { "name": "Workflow", "slug": "workflow" } }
+    },
+    {
+      "id": "tag_read0001", "status": "published", "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00", "sample": true,
+      "translations": { "ar": { "name": "قراءة", "slug": "قراءة" }, "en": { "name": "Reading", "slug": "reading" } }
+    },
+    {
+      "id": "tag_desgn001", "status": "published", "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00", "sample": true,
+      "translations": { "ar": { "name": "تصميم", "slug": "تصميم" }, "en": { "name": "Design", "slug": "design" } }
+    },
+    {
+      "id": "tag_syst0001", "status": "published", "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00", "sample": true,
+      "translations": { "ar": { "name": "أنظمة", "slug": "أنظمة" }, "en": { "name": "Systems", "slug": "systems" } }
+    }
+  ]
+}

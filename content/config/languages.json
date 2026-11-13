@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "code": "ar",
+      "enabled": true,
+      "default": true,
+      "name": "Arabic",
+      "nativeName": "العربية",
+      "direction": "rtl",
+      "locale": "ar-EG",
+      "numerals": "latn",
+      "readingWpm": 180,
+      "routes": {
+        "about": "عني",
+        "portfolio": "أعمال",
+        "blog": "مدونة",
+        "topics": "مواضيع",
+        "tags": "وسوم",
+        "contact": "تواصل",
+        "search": "بحث"
+      },
+      "typography": {
+        "googleFonts": [
+          "family=IBM+Plex+Sans+Arabic:wght@400;500;600;700",
+          "family=Noto+Naskh+Arabic:wght@500;600;700"
+        ],
+        "fonts": {
+          "heading": "\"Noto Naskh Arabic\", \"IBM Plex Sans Arabic\", \"Segoe UI\", Tahoma, serif",
+          "body": "\"IBM Plex Sans Arabic\", \"Segoe UI\", Tahoma, system-ui, sans-serif",
+          "mono": "ui-monospace, Menlo, Consolas, monospace"
+        },
+        "baseSize": "1.125rem",
+        "lineHeight": 1.95,
+        "headingLineHeight": 1.5,
+        "letterSpacing": "0",
+        "headingWeight": 700
+      },
+      "layout": {
+        "contentWidth": "74rem",
+        "measure": "40rem"
+      }
+    },
+    {
+      "code": "en",
+      "enabled": true,
+      "default": false,
+      "name": "English",
+      "nativeName": "English",
+      "direction": "ltr",
+      "locale": "en-GB",
+      "numerals": "latn",
+      "readingWpm": 230,
+      "routes": {
+        "about": "about",
+        "portfolio": "portfolio",
+        "blog": "blog",
+        "topics": "topics",
+        "tags": "tags",
+        "contact": "contact",
+        "search": "search"
+      },
+      "typography": {
+        "googleFonts": [
+          "family=IBM+Plex+Sans:wght@400;500;600",
+          "family=Newsreader:wght@500;600;700"
+        ],
+        "fonts": {
+          "heading": "Newsreader, Georgia, \"Times New Roman\", serif",
+          "body": "\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+          "mono": "ui-monospace, Menlo, Consolas, monospace"
+        },
+        "baseSize": "1.0625rem",
+        "lineHeight": 1.7,
+        "headingLineHeight": 1.15,
+        "letterSpacing": "-0.005em",
+        "headingWeight": 600
+      },
+      "layout": {
+        "contentWidth": "72rem",
+        "measure": "38rem"
+      }
+    }
+  ]
+}

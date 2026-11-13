@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "art_readar01",
+  "status": "published",
+  "createdAt": "2026-10-21T20:00:00+02:00",
+  "updatedAt": "2026-10-22T20:00:00+02:00",
+  "publishedAt": "2026-10-22T20:00:00+02:00",
+  "authorId": "aut_h4x9k2m1",
+  "template": "personal-journal",
+  "topicIds": ["top_learn001"],
+  "tagIds": ["tag_read0001", "tag_notes001"],
+  "coverMediaId": "med_9f3k2a04",
+  "sample": true,
+  "translations": {
+    "ar": {
+      "status": "published",
+      "slug": "قراءة-بطيئة",
+      "title": "قراءة بطيئة",
+      "subtitle": "ملاحظات تجريبية عن القراءة بتأنٍّ",
+      "excerpt": "تدوينة تجريبية بالعربية فقط، لتوضيح أن كل لغة في الموقع مستقلة بعناوينها وروابطها ومحتواها.",
+      "coverAlt": "شبكة من المربعات المفرغة يتخللها مربعان أسودان",
+      "body": [
+        { "id": "blk_r1ar0001", "type": "paragraph", "style": "lead", "text": "القراءة البطيئة عادة بسيطة: كتاب واحد، وقلم، وساعة بلا إشعارات." },
+        { "id": "blk_r1ar0002", "type": "heading", "level": 2, "text": "ثلاث ملاحظات" },
+        { "id": "blk_r1ar0003", "type": "list", "ordered": true, "items": [
+          "اقرأ الفقرة مرتين قبل أن تحكم عليها.",
+          "دوّن سؤالًا واحدًا في الهامش لكل فصل.",
+          "أعد قراءة الصفحة الأولى بعد أن تنتهي من الكتاب."
+        ] },
+        { "id": "blk_r1ar0004", "type": "quote", "variant": "block", "text": "ما يُقرأ على عجل يُنسى على عجل." },
+        { "id": "blk_r1ar0005", "type": "callout", "tone": "note", "title": "محتوى تجريبي بالعربية فقط", "text": "لا توجد لهذه التدوينة نسخة إنجليزية؛ لذلك يعيدك زر تبديل اللغة إلى الصفحة الرئيسية الإنجليزية." }
+      ]
+    }
+  }
+}

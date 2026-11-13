@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "header": {
+    "ar": [
+      { "id": "nvi_arhome01", "label": "الرئيسية", "target": { "page": "home" } },
+      { "id": "nvi_arblog01", "label": "المدونة", "target": { "page": "blog" } },
+      { "id": "nvi_arwork01", "label": "الأعمال", "target": { "page": "portfolio" } },
+      { "id": "nvi_arabout1", "label": "عني", "target": { "page": "about" } },
+      { "id": "nvi_arcont01", "label": "تواصل", "target": { "page": "contact" } }
+    ],
+    "en": [
+      { "id": "nvi_enhome01", "label": "Home", "target": { "page": "home" } },
+      { "id": "nvi_enblog01", "label": "Blog", "target": { "page": "blog" } },
+      { "id": "nvi_enwork01", "label": "Portfolio", "target": { "page": "portfolio" } },
+      { "id": "nvi_entopic1", "label": "Topics", "target": { "page": "topics" } },
+      { "id": "nvi_enabout1", "label": "About", "target": { "page": "about" } },
+      { "id": "nvi_encont01", "label": "Contact", "target": { "page": "contact" } }
+    ]
+  },
+  "footer": {
+    "ar": [
+      { "id": "nvi_arfblog1", "label": "المدونة", "target": { "page": "blog" } },
+      { "id": "nvi_arfwork1", "label": "الأعمال", "target": { "page": "portfolio" } },
+      { "id": "nvi_arftopc1", "label": "المواضيع", "target": { "page": "topics" } },
+      { "id": "nvi_arfabot1", "label": "عني", "target": { "page": "about" } },
+      { "id": "nvi_arfcont1", "label": "تواصل", "target": { "page": "contact" } }
+    ],
+    "en": [
+      { "id": "nvi_enfblog1", "label": "Blog", "target": { "page": "blog" } },
+      { "id": "nvi_enfwork1", "label": "Portfolio", "target": { "page": "portfolio" } },
+      { "id": "nvi_enftopc1", "label": "Topics", "target": { "page": "topics" } },
+      { "id": "nvi_enfabot1", "label": "About", "target": { "page": "about" } },
+      { "id": "nvi_enfcont1", "label": "Contact", "target": { "page": "contact" } }
+    ]
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://abdo.invalid/schemas/taxonomy.schema.json",
+  "title": "Topics and tags",
+  "description": "Topics (hierarchical, the site's categories) and tags (flat, reusable labels). Both are plain data: add, rename or remove them without touching code.",
+  "$defs": {
+    "topicsFile": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "items"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/topic"
+          }
+        }
+      }
+    },
+    "tagsFile": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "items"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tag"
+          }
+        }
+      }
+    },
+    "topic": {
+      "type": "object",
+      "required": [
+        "id",
+        "status",
+        "visibility",
+        "createdAt",
+        "updatedAt",
+        "translations"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id_topic"
+        },
+        "status": {
+          "$ref": "common.schema.json#/$defs/contentStatus"
+        },
+        "visibility": {
+          "$ref": "common.schema.json#/$defs/visibility"
+        },
+        "createdAt": {
+          "$ref": "common.schema.json#/$defs/dateTime"
+        },
+        "updatedAt": {
+          "$ref": "common.schema.json#/$defs/dateTime"
+        },
+        "parentId": {
+          "$ref": "common.schema.json#/$defs/id_topic"
+        },
+        "featured": {
+          "type": "boolean"
+        },
+        "mediaId": {
+          "$ref": "common.schema.json#/$defs/id_media"
+        },
+        "sample": {
+          "type": "boolean"
+        },
+        "translations": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "common.schema.json#/$defs/lang"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "name",
+              "slug",
+              "description"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "slug": {
+                "$ref": "common.schema.json#/$defs/slug"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "synonyms": {
+                "type": "array",
+                "maxItems": 20,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                }
+              },
+              "seo": {
+                "$ref": "common.schema.json#/$defs/seo"
+              },
+              "redirectSlugs": {
+                "description": "Earlier slugs of this page. A small redirect page is built for each, so old links keep working after a rename or a merge.",
+                "type": "array",
+                "maxItems": 20,
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/slug"
+                }
+              }
+            }
+          }
+        },
+        "icon": {
+          "description": "One of the built-in icons (src/core/icons.mjs).",
+          "type": "string",
+          "pattern": "^[a-z][a-z-]{1,23}$"
+        },
+        "color": {
+          "description": "Accent colour of the topic's card and page.",
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "relatedTopicIds": {
+          "type": "array",
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/id_topic"
+          }
+        },
+        "pinnedItemIds": {
+          "description": "Articles and projects shown first on the topic page.",
+          "type": "array",
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "common.schema.json#/$defs/id_article"
+              },
+              {
+                "$ref": "common.schema.json#/$defs/id_project"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tag": {
+      "type": "object",
+      "required": [
+        "id",
+        "status",
+        "createdAt",
+        "updatedAt",
+        "translations"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id_tag"
+        },
+        "status": {
+          "$ref": "common.schema.json#/$defs/contentStatus"
+        },
+        "createdAt": {
+          "$ref": "common.schema.json#/$defs/dateTime"
+        },
+        "updatedAt": {
+          "$ref": "common.schema.json#/$defs/dateTime"
+        },
+        "sample": {
+          "type": "boolean"
+        },
+        "translations": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "common.schema.json#/$defs/lang"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "name",
+              "slug"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "slug": {
+                "$ref": "common.schema.json#/$defs/slug"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              },
+              "synonyms": {
+                "type": "array",
+                "maxItems": 20,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                }
+              },
+              "aliases": {
+                "type": "array",
+                "maxItems": 10,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 60
+                }
+              },
+              "seo": {
+                "$ref": "common.schema.json#/$defs/seo"
+              },
+              "redirectSlugs": {
+                "description": "Earlier slugs of this page. A small redirect page is built for each, so old links keep working after a rename or a merge.",
+                "type": "array",
+                "maxItems": 20,
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/slug"
+                }
+              }
+            }
+          }
+        },
+        "visibility": {
+          "$ref": "common.schema.json#/$defs/visibility"
+        },
+        "relatedTagIds": {
+          "type": "array",
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/id_tag"
+          }
+        }
+      }
+    }
+  }
+}

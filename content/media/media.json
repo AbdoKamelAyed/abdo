@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "med_9f3k2a01", "status": "active", "type": "image", "file": "sample-cover-1.svg", "mimeType": "image/svg+xml",
+      "width": 1200, "height": 800, "sample": true,
+      "alt": { "ar": "دائرة بيضاء نصفية فوق أفق داكن مع خطوط متناقصة", "en": "A white half circle above a dark horizon with shrinking lines" },
+      "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00"
+    },
+    {
+      "id": "med_9f3k2a02", "status": "active", "type": "image", "file": "sample-cover-2.svg", "mimeType": "image/svg+xml",
+      "width": 1200, "height": 800, "sample": true,
+      "alt": { "ar": "أعمدة سوداء متدرجة في الارتفاع على خلفية رمادية فاتحة", "en": "Black bars rising and falling on a light grey background" },
+      "caption": { "ar": "صورة تجريبية: أعمدة متدرجة", "en": "Sample image: rising and falling bars" },
+      "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00"
+    },
+    {
+      "id": "med_9f3k2a03", "status": "active", "type": "image", "file": "sample-cover-3.svg", "mimeType": "image/svg+xml",
+      "width": 1200, "height": 800, "sample": true,
+      "alt": { "ar": "دوائر متحدة المركز بيضاء على خلفية رمادية داكنة", "en": "White concentric circles on a dark grey background" },
+      "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00"
+    },
+    {
+      "id": "med_9f3k2a04", "status": "active", "type": "image", "file": "sample-cover-4.svg", "mimeType": "image/svg+xml",
+      "width": 1200, "height": 800, "sample": true,
+      "alt": { "ar": "شبكة من المربعات المفرغة يتخللها مربعان أسودان", "en": "A grid of outlined squares with two filled in black" },
+      "createdAt": "2026-10-01T09:00:00+02:00", "updatedAt": "2026-10-01T09:00:00+02:00"
+    }
+  ]
+}

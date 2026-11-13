@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "preset": "editorial-magazine",
+  "overrides": {},
+  "glass": {
+    "enabled": true,
+    "light": { "blur": 18, "opacity": 68, "border": true, "shadow": "soft" },
+    "dark": { "blur": 18, "opacity": 68, "border": true, "shadow": "soft" },
+    "elements": { "header": true, "menu": true, "cards": true, "hero": true, "footer": true }
+  },
+  "animation": "subtle"
+}

@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://abdo.invalid/schemas/article.schema.json",
+  "title": "Article",
+  "description": "One file per article at content/articles/<id>.json. Language-independent fields live at the top; everything a reader sees lives in `translations`, so Arabic and English can differ completely (headline, slug, excerpt, body, SEO).",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "status",
+    "createdAt",
+    "updatedAt",
+    "authorId",
+    "topicIds",
+    "translations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "$ref": "common.schema.json#/$defs/schemaVersion"
+    },
+    "id": {
+      "$ref": "common.schema.json#/$defs/id_article"
+    },
+    "status": {
+      "description": "Master switch. A translation is public only when BOTH this and the translation's own status are \"published\".",
+      "$ref": "common.schema.json#/$defs/contentStatus"
+    },
+    "createdAt": {
+      "$ref": "common.schema.json#/$defs/dateTime"
+    },
+    "updatedAt": {
+      "$ref": "common.schema.json#/$defs/dateTime"
+    },
+    "publishedAt": {
+      "$ref": "common.schema.json#/$defs/dateTime"
+    },
+    "authorId": {
+      "$ref": "common.schema.json#/$defs/id_author"
+    },
+    "internalNotes": {
+      "description": "Notes for the owner: sources, to-dos, reminders. Never rendered, never in the built site. They are stored in the repository like everything else, so anyone who can read the repository can read them: no secrets.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "typography": {
+      "$ref": "common.schema.json#/$defs/typographyOverride"
+    },
+    "template": {
+      "description": "Starting layout, e.g. editorial, long-read, personal-journal. Used as a CSS class and as a homepage filter.",
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "topicIds": {
+      "description": "The first topic is shown as the article's category.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "common.schema.json#/$defs/id_topic"
+      }
+    },
+    "tagIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "common.schema.json#/$defs/id_tag"
+      }
+    },
+    "coverMediaId": {
+      "$ref": "common.schema.json#/$defs/id_media"
+    },
+    "sample": {
+      "description": "True for placeholder content. Delete it before launch; the site shows a notice while any sample content exists.",
+      "type": "boolean"
+    },
+    "translations": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/lang"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/translation"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "enum": ["published", "scheduled"]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "publishedAt"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "translation": {
+      "type": "object",
+      "required": [
+        "status",
+        "slug",
+        "title",
+        "excerpt",
+        "body"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "common.schema.json#/$defs/contentStatus"
+        },
+        "slug": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400
+        },
+        "coverAlt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "block.schema.json"
+          },
+          "description": "Content blocks. May be empty while the translation is a draft; a published translation needs at least one block."
+        },
+        "seo": {
+          "$ref": "common.schema.json#/$defs/seo"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "enum": ["published", "scheduled"]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "body": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

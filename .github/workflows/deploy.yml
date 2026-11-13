@@ -1,0 +1,85 @@
+# Builds the site and publishes it to GitHub Pages.
+#
+# One-time setup: repository Settings > Pages > Build and deployment > Source: "GitHub Actions".
+#
+# While content/ still contains sample content ("sample": true) the build warns but succeeds.
+# When you are ready to publish for real, replace the samples and set the repository variable
+# EXCLUDE_SAMPLES to "true" (Settings > Secrets and variables > Actions > Variables).
+# From then on the build refuses to publish if your profile is still marked as a sample.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Scheduled publishing: the site is static, so content scheduled for a future time goes live when a
+  # build runs after that time. This timer runs the build every 30 minutes; the `check` job skips the
+  # run unless something became due. GitHub may delay or drop timer runs under load, and it disables
+  # timers on a repository with no activity for 60 days (any push or a manual run re-enables it).
+  schedule:
+    - cron: '7,37 * * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.schedule.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: schedule
+        name: Decide whether to build
+        run: node tools/scheduled.mjs --github-output
+
+  build:
+    needs: check
+    if: needs.check.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run tests
+        run: npm test
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          EXCLUDE_SAMPLES: ${{ vars.EXCLUDE_SAMPLES }}
+        run: |
+          flags=""
+          if [ "$EXCLUDE_SAMPLES" = "true" ]; then flags="--exclude-samples"; fi
+          node src/build.mjs --site-url "$SITE_URL" --out dist $flags
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "top_ideas001",
+      "status": "published",
+      "visibility": "public",
+      "createdAt": "2026-10-01T09:00:00+02:00",
+      "updatedAt": "2026-10-01T09:00:00+02:00",
+      "featured": true,
+      "sample": true,
+      "translations": {
+        "ar": { "name": "أفكار", "slug": "أفكار", "description": "ملاحظات ومقالات وأفكار لم تكتمل بعد." },
+        "en": { "name": "Ideas", "slug": "ideas", "description": "Observations, essays and half-formed thoughts." }
+      }
+    },
+    {
+      "id": "top_writ0001",
+      "status": "published",
+      "visibility": "public",
+      "createdAt": "2026-10-01T09:00:00+02:00",
+      "updatedAt": "2026-10-01T09:00:00+02:00",
+      "parentId": "top_ideas001",
+      "sample": true,
+      "translations": {
+        "ar": { "name": "كتابة", "slug": "كتابة", "description": "عن الكتابة والتدوين وحفظ الأثر." },
+        "en": { "name": "Writing", "slug": "writing", "description": "On writing, note-taking and keeping a record." }
+      }
+    },
+    {
+      "id": "top_learn001",
+      "status": "published",
+      "visibility": "public",
+      "createdAt": "2026-10-01T09:00:00+02:00",
+      "updatedAt": "2026-10-01T09:00:00+02:00",
+      "featured": true,
+      "sample": true,
+      "translations": {
+        "ar": { "name": "تعلّم", "slug": "تعلم", "description": "كيف نتعلم، وما الذي يستحق التعلّم." },
+        "en": { "name": "Learning", "slug": "learning", "description": "How things are learned, and what is worth learning." }
+      }
+    },
+    {
+      "id": "top_make0001",
+      "status": "published",
+      "visibility": "public",
+      "createdAt": "2026-10-01T09:00:00+02:00",
+      "updatedAt": "2026-10-01T09:00:00+02:00",
+      "featured": true,
+      "sample": true,
+      "translations": {
+        "ar": { "name": "صناعة", "slug": "صناعة", "description": "مشاريع صُنعت باليد أو بالشيفرة، وكيف صُنعت." },
+        "en": { "name": "Making", "slug": "making", "description": "Projects built by hand or by code, and how they were made." }
+      }
+    },
+    {
+      "id": "top_tech0001",
+      "status": "published",
+      "visibility": "public",
+      "createdAt": "2026-10-01T09:00:00+02:00",
+      "updatedAt": "2026-10-01T09:00:00+02:00",
+      "featured": true,
+      "sample": true,
+      "translations": {
+        "ar": { "name": "تقنية", "slug": "تقنية", "description": "أدوات وأنظمة، وكيف تُشكّل طريقة العمل." },
+        "en": { "name": "Technology", "slug": "technology", "description": "Tools and systems, and how they shape the way we work." }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1080 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://abdo.invalid/schemas/config.schema.json",
+  "title": "Site configuration files",
+  "description": "Schemas for everything in content/config/ plus the UI string files and design presets.",
+  "$defs": {
+    "site": {
+      "description": "SiteConfiguration - content/config/site.json",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "name",
+        "tagline",
+        "description",
+        "canonicalDomain",
+        "timezone",
+        "updatedAt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "name": {
+          "$ref": "common.schema.json#/$defs/localized"
+        },
+        "tagline": {
+          "$ref": "common.schema.json#/$defs/localized"
+        },
+        "description": {
+          "$ref": "common.schema.json#/$defs/localized"
+        },
+        "canonicalDomain": {
+          "description": "Public address of the site, no trailing slash. For a GitHub project site this includes the repository name. The deploy workflow overrides it automatically.",
+          "type": "string",
+          "format": "uri"
+        },
+        "timezone": {
+          "description": "IANA time zone used when displaying dates, e.g. Africa/Cairo.",
+          "type": "string",
+          "minLength": 1
+        },
+        "socialImageMediaId": {
+          "$ref": "common.schema.json#/$defs/id_media"
+        },
+        "sampleBanner": {
+          "description": "Show a notice while sample content exists.",
+          "type": "boolean"
+        },
+        "updatedAt": {
+          "$ref": "common.schema.json#/$defs/dateTime"
+        }
+      }
+    },
+    "languagesFile": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "items"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/language"
+          }
+        }
+      }
+    },
+    "language": {
+      "description": "LanguageConfiguration. Each language is a fully independent experience: its own typography, layout, URL segments and (see navigation.json / homepage.json) navigation and homepage composition.",
+      "type": "object",
+      "required": [
+        "code",
+        "enabled",
+        "default",
+        "name",
+        "nativeName",
+        "direction",
+        "locale",
+        "numerals",
+        "readingWpm",
+        "routes",
+        "typography",
+        "layout"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "$ref": "common.schema.json#/$defs/lang"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "default": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nativeName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "enum": [
+            "ltr",
+            "rtl"
+          ]
+        },
+        "locale": {
+          "description": "BCP 47 locale used for dates and numbers, e.g. ar-EG.",
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+        },
+        "numerals": {
+          "description": "arab = ٠١٢٣, latn = 0123.",
+          "enum": [
+            "arab",
+            "latn"
+          ]
+        },
+        "readingWpm": {
+          "description": "Words per minute used for the estimated reading time.",
+          "type": "integer",
+          "minimum": 60,
+          "maximum": 400
+        },
+        "routes": {
+          "description": "URL segment for each section in this language.",
+          "type": "object",
+          "required": [
+            "about",
+            "portfolio",
+            "blog",
+            "topics",
+            "tags",
+            "contact"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "about": {
+              "$ref": "common.schema.json#/$defs/slug"
+            },
+            "portfolio": {
+              "$ref": "common.schema.json#/$defs/slug"
+            },
+            "blog": {
+              "$ref": "common.schema.json#/$defs/slug"
+            },
+            "topics": {
+              "$ref": "common.schema.json#/$defs/slug"
+            },
+            "tags": {
+              "$ref": "common.schema.json#/$defs/slug"
+            },
+            "contact": {
+              "$ref": "common.schema.json#/$defs/slug"
+            },
+            "search": {
+              "$ref": "common.schema.json#/$defs/slug"
+            }
+          }
+        },
+        "typography": {
+          "type": "object",
+          "required": [
+            "googleFonts",
+            "fonts",
+            "baseSize",
+            "lineHeight",
+            "headingLineHeight",
+            "letterSpacing",
+            "headingWeight"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "googleFonts": {
+              "description": "Google Fonts css2 'family=' fragments to load, e.g. family=Inter:wght@400;600. Leave empty to use only system fonts.",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^family=[A-Za-z0-9+:;@.,_-]+$"
+              }
+            },
+            "fonts": {
+              "type": "object",
+              "required": [
+                "heading",
+                "body"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "heading": {
+                  "description": "CSS font-family list.",
+                  "type": "string",
+                  "minLength": 1
+                },
+                "body": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "mono": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "baseSize": {
+              "$ref": "common.schema.json#/$defs/cssLength"
+            },
+            "lineHeight": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 2.6
+            },
+            "headingLineHeight": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 2
+            },
+            "letterSpacing": {
+              "description": "Keep 0 for Arabic: letter-spacing breaks Arabic letter joining.",
+              "type": "string",
+              "pattern": "^(0|normal|-?[0-9]+(\\.[0-9]+)?(em|px|rem))$"
+            },
+            "headingWeight": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 900
+            }
+          }
+        },
+        "layout": {
+          "type": "object",
+          "required": [
+            "contentWidth",
+            "measure"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "contentWidth": {
+              "description": "Maximum page width.",
+              "$ref": "common.schema.json#/$defs/cssLength"
+            },
+            "measure": {
+              "description": "Maximum width of a text column (article body).",
+              "$ref": "common.schema.json#/$defs/cssLength"
+            },
+            "breakpoints": {
+              "description": "Screen widths in px where the tablet and mobile settings begin (at or below).",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tablet": {
+                  "type": "integer",
+                  "minimum": 600,
+                  "maximum": 1400
+                },
+                "mobile": {
+                  "type": "integer",
+                  "minimum": 360,
+                  "maximum": 900
+                }
+              }
+            },
+            "devices": {
+              "description": "Separate desktop, tablet and mobile settings.",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "desktop": {
+                  "$ref": "#/$defs/deviceLayout"
+                },
+                "tablet": {
+                  "$ref": "#/$defs/deviceLayout"
+                },
+                "mobile": {
+                  "$ref": "#/$defs/deviceLayout"
+                }
+              }
+            },
+            "cards": {
+              "description": "flat: no frame; outlined: thin border; elevated: shadow instead of a border.",
+              "enum": [
+                "flat",
+                "outlined",
+                "elevated"
+              ]
+            },
+            "header": {
+              "description": "classic: name left, menu centred, tools right; centered: name above a centred menu; compact: name and menu together at the start.",
+              "enum": [
+                "classic",
+                "centered",
+                "compact"
+              ]
+            },
+            "footer": {
+              "enum": [
+                "columns",
+                "centered",
+                "minimal"
+              ]
+            },
+            "nav": {
+              "description": "How menu links show the current page.",
+              "enum": [
+                "underline",
+                "pill",
+                "plain"
+              ]
+            },
+            "stickyHeader": {
+              "description": "Keep the header visible while scrolling (default true).",
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "navigationFile": {
+      "description": "Navigation per language. Arabic and English lists are independent: order, labels and items can differ.",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "header",
+        "footer"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "header": {
+          "$ref": "#/$defs/navigationByLanguage"
+        },
+        "footer": {
+          "$ref": "#/$defs/navigationByLanguage"
+        }
+      }
+    },
+    "navigationByLanguage": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/lang"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/navigationItem"
+        }
+      }
+    },
+    "navigationItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "target"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^nvi_[0-9a-z]{8}$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": [
+                "page"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "page": {
+                  "enum": [
+                    "home",
+                    "about",
+                    "portfolio",
+                    "blog",
+                    "topics",
+                    "tags",
+                    "search",
+                    "contact"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": [
+                "url"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "homepageFile": {
+      "description": "HomepageSection lists, one independent list per language.",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "languages"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "languages": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "common.schema.json#/$defs/lang"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "sections"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "sections": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/homepageSection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "homepageSection": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "enabled"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^hsc_[0-9a-z]{8}$"
+        },
+        "type": {
+          "enum": [
+            "featured",
+            "articles",
+            "projects",
+            "topics",
+            "highlights",
+            "follow"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intro": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layout": {
+          "description": "featured: split | overlay; articles: editorial | grid | list; projects: grid | list; topics/highlights/follow: default.",
+          "type": "string",
+          "minLength": 1
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "imageRatio": {
+          "enum": [
+            "16:9",
+            "4:3",
+            "3:2",
+            "1:1",
+            "3:4"
+          ]
+        },
+        "spacing": {
+          "enum": [
+            "compact",
+            "normal",
+            "relaxed"
+          ]
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "description": "featured only: which content type to pick from.",
+              "enum": [
+                "article",
+                "project",
+                "any"
+              ]
+            },
+            "itemId": {
+              "description": "featured only: pin one specific article or project.",
+              "type": "string",
+              "minLength": 1
+            },
+            "featuredOnly": {
+              "type": "boolean"
+            },
+            "topicIds": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/id_topic"
+              }
+            },
+            "templates": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/slug"
+              }
+            }
+          }
+        }
+      }
+    },
+    "designFile": {
+      "description": "Active design: which preset, plus overrides, glass mode and motion. Changing the preset only changes CSS; it never touches content.",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "preset",
+        "glass",
+        "animation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "preset": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "light": {
+              "$ref": "#/$defs/modeTokens"
+            },
+            "dark": {
+              "$ref": "#/$defs/modeTokens"
+            },
+            "shared": {
+              "$ref": "#/$defs/sharedTokens"
+            }
+          }
+        },
+        "glass": {
+          "$ref": "#/$defs/glass"
+        },
+        "animation": {
+          "enum": [
+            "none",
+            "subtle",
+            "full"
+          ]
+        },
+        "languageOverrides": {
+          "description": "Colour changes for one language only (colours 'where needed'). Merged over the preset and the overrides above.",
+          "type": "object",
+          "propertyNames": {
+            "$ref": "common.schema.json#/$defs/lang"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "light": {
+                "$ref": "#/$defs/modeTokens"
+              },
+              "dark": {
+                "$ref": "#/$defs/modeTokens"
+              }
+            }
+          }
+        }
+      }
+    },
+    "modeTokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bg": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "surface": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "muted": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "border": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "primary": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "onPrimary": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "secondary": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "accent": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        }
+      }
+    },
+    "sharedTokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "radius": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "radiusLarge": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "sectionSpacing": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "gutter": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "backdropLight": {
+          "description": "Optional CSS background-image (e.g. a gradient) behind the whole page in light mode.",
+          "type": "string",
+          "minLength": 1
+        },
+        "backdropDark": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardShadow": {
+          "description": "Shadow of cards when Glass Mode does not apply.",
+          "enum": [
+            "none",
+            "soft",
+            "medium",
+            "strong"
+          ]
+        }
+      }
+    },
+    "glass": {
+      "description": "Glass Design System. Independent of the colour theme; light and dark are configured separately.",
+      "type": "object",
+      "required": [
+        "enabled",
+        "light",
+        "dark",
+        "elements"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "light": {
+          "$ref": "#/$defs/glassMode"
+        },
+        "dark": {
+          "$ref": "#/$defs/glassMode"
+        },
+        "elements": {
+          "type": "object",
+          "required": [
+            "header",
+            "menu",
+            "cards",
+            "hero",
+            "footer"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "header": {
+              "type": "boolean"
+            },
+            "menu": {
+              "type": "boolean"
+            },
+            "cards": {
+              "type": "boolean"
+            },
+            "hero": {
+              "type": "boolean"
+            },
+            "footer": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "glassMode": {
+      "type": "object",
+      "required": [
+        "blur",
+        "opacity",
+        "border",
+        "shadow"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "blur": {
+          "description": "Blur radius in px.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 60
+        },
+        "opacity": {
+          "description": "Surface opacity in percent.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "border": {
+          "type": "boolean"
+        },
+        "shadow": {
+          "enum": [
+            "none",
+            "soft",
+            "medium",
+            "strong"
+          ]
+        },
+        "surface": {
+          "description": "Glass surface colour. Defaults to the page background of that mode.",
+          "$ref": "common.schema.json#/$defs/hexColor"
+        }
+      }
+    },
+    "presetsFile": {
+      "description": "DesignPreset collection.",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "items"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/preset"
+          }
+        }
+      }
+    },
+    "preset": {
+      "type": "object",
+      "required": [
+        "id",
+        "key",
+        "name",
+        "tokens"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^dsp_[0-9a-z]{8}$"
+        },
+        "key": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "name": {
+          "$ref": "common.schema.json#/$defs/localized"
+        },
+        "tokens": {
+          "type": "object",
+          "required": [
+            "light",
+            "dark",
+            "shared"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "light": {
+              "$ref": "#/$defs/fullModeTokens"
+            },
+            "dark": {
+              "$ref": "#/$defs/fullModeTokens"
+            },
+            "shared": {
+              "$ref": "#/$defs/fullSharedTokens"
+            }
+          }
+        },
+        "custom": {
+          "description": "true for presets made by the site owner (shipped presets omit it).",
+          "type": "boolean"
+        }
+      }
+    },
+    "fullModeTokens": {
+      "type": "object",
+      "required": [
+        "bg",
+        "surface",
+        "text",
+        "muted",
+        "border",
+        "primary",
+        "onPrimary",
+        "secondary",
+        "accent"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "bg": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "surface": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "muted": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "border": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "primary": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "onPrimary": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "secondary": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        },
+        "accent": {
+          "$ref": "common.schema.json#/$defs/hexColor"
+        }
+      }
+    },
+    "fullSharedTokens": {
+      "type": "object",
+      "required": [
+        "radius",
+        "radiusLarge",
+        "sectionSpacing",
+        "gutter"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "radius": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "radiusLarge": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "sectionSpacing": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "gutter": {
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "backdropLight": {
+          "type": "string",
+          "minLength": 1
+        },
+        "backdropDark": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardShadow": {
+          "description": "Shadow of cards when Glass Mode does not apply.",
+          "enum": [
+            "none",
+            "soft",
+            "medium",
+            "strong"
+          ]
+        }
+      }
+    },
+    "uiStringsFile": {
+      "description": "Interface text for one language - content/i18n/<lang>.json. Placeholders: {n}, {year}, {name}.",
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "strings"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "strings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "deviceLayout": {
+      "description": "Layout for one screen size. Anything left out keeps the site default for that size.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "columns": {
+          "description": "Columns in card grids (1 to 4).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "gap": {
+          "description": "Space between cards.",
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "sectionSpacing": {
+          "description": "Vertical space around homepage sections.",
+          "$ref": "common.schema.json#/$defs/cssLength"
+        },
+        "pagePadding": {
+          "description": "Space between the page edge and the content.",
+          "$ref": "common.schema.json#/$defs/cssLength"
+        }
+      }
+    },
+    "searchFile": {
+      "description": "Optional. Search settings; anything left out uses the default.",
+      "type": "object",
+      "required": [
+        "schemaVersion"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "$ref": "common.schema.json#/$defs/schemaVersion"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "types": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "article": {
+              "type": "boolean"
+            },
+            "project": {
+              "type": "boolean"
+            },
+            "topic": {
+              "type": "boolean"
+            },
+            "tag": {
+              "type": "boolean"
+            },
+            "profile": {
+              "type": "boolean"
+            },
+            "cv": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 48
+        },
+        "defaultView": {
+          "enum": [
+            "grid",
+            "list",
+            "compact"
+          ]
+        },
+        "autocomplete": {
+          "type": "boolean"
+        },
+        "instant": {
+          "type": "boolean"
+        },
+        "ranking": {
+          "enum": [
+            "balanced",
+            "titles-first",
+            "content-first"
+          ]
+        },
+        "languages": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "common.schema.json#/$defs/lang"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "foldTaMarbuta": {
+                "type": "boolean"
+              },
+              "stripDefiniteArticle": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "synonyms": {
+          "description": "Groups of words that mean the same thing, per language. Single words only.",
+          "type": "object",
+          "propertyNames": {
+            "$ref": "common.schema.json#/$defs/lang"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 12,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "pattern": "^[^\\s]+$"
+              }
+            }
+          }
+        },
+        "pagination": {
+          "enum": [
+            "pages",
+            "more"
+          ]
+        }
+      }
+    }
+  }
+}

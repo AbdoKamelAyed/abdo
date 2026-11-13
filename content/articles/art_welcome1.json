@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "art_welcome1",
+  "status": "published",
+  "createdAt": "2026-10-20T10:00:00+02:00",
+  "updatedAt": "2026-11-01T09:00:00+02:00",
+  "publishedAt": "2026-11-01T09:00:00+02:00",
+  "authorId": "aut_h4x9k2m1",
+  "template": "editorial",
+  "featured": true,
+  "topicIds": ["top_ideas001", "top_writ0001"],
+  "tagIds": ["tag_notes001", "tag_desgn001"],
+  "coverMediaId": "med_9f3k2a01",
+  "sample": true,
+  "translations": {
+    "en": {
+      "status": "published",
+      "slug": "welcome-to-abdo",
+      "title": "Welcome to ABDO",
+      "subtitle": "A sample article that shows what the editorial layout can do",
+      "excerpt": "This is placeholder content. It exists so you can see the design, the Arabic and English layouts, and the content blocks working together before you write anything of your own.",
+      "coverAlt": "A white half circle above a dark horizon with shrinking lines",
+      "body": [
+        { "id": "blk_w1en0001", "type": "paragraph", "style": "lead", "text": "ABDO is a personal publication: part magazine, part notebook, part portfolio. Everything you are reading now is **sample content** stored as plain JSON files, and it is meant to be replaced." },
+        { "id": "blk_w1en0002", "type": "heading", "level": 2, "text": "What a page is made of" },
+        { "id": "blk_w1en0003", "type": "paragraph", "text": "Each article is a list of blocks. A block can be a paragraph, a heading, a quote, a list, an image or a callout. Because the content is structured data rather than one lump of HTML, the same article can later become a PDF, a search result or a feed entry without being rewritten." },
+        { "id": "blk_w1en0004", "type": "image", "mediaId": "med_9f3k2a02", "size": "wide" },
+        { "id": "blk_w1en0005", "type": "quote", "variant": "pull", "text": "Good structure is invisible; the reader only notices the writing." },
+        { "id": "blk_w1en0006", "type": "heading", "level": 2, "text": "Replacing the sample content" },
+        { "id": "blk_w1en0007", "type": "list", "ordered": true, "items": [
+          "Open `content/articles/` and edit or delete the sample files.",
+          "Add your own topics in `content/taxonomy/topics.json`.",
+          "Run `npm run build` and check the `dist/` folder."
+        ] },
+        { "id": "blk_w1en0008", "type": "callout", "tone": "tip", "title": "Delete sample content before launch", "text": "Anything marked `\"sample\": true` is shown with a notice. Build with `--exclude-samples` to leave it out of the published site." },
+        { "id": "blk_w1en0009", "type": "divider" },
+        { "id": "blk_w1en0010", "type": "paragraph", "text": "When you are ready, start with your first real article." }
+      ]
+    },
+    "ar": {
+      "status": "published",
+      "slug": "مرحبا-بكم-في-عبده",
+      "title": "مرحبًا بكم في عبده",
+      "subtitle": "مقال تجريبي يعرض ما يمكن أن يفعله التصميم التحريري",
+      "excerpt": "هذا محتوى تجريبي وُضع ليتيح لك رؤية التصميم وتخطيط اللغتين العربية والإنجليزية وكتل المحتوى وهي تعمل معًا، قبل أن تكتب شيئًا من عندك.",
+      "coverAlt": "دائرة بيضاء نصفية فوق أفق داكن مع خطوط متناقصة",
+      "body": [
+        { "id": "blk_w1ar0001", "type": "paragraph", "style": "lead", "text": "«عبده» منشور شخصي: جزء منه مجلة، وجزء دفتر ملاحظات، وجزء معرض أعمال. كل ما تقرؤه الآن **محتوى تجريبي** محفوظ في ملفات JSON بسيطة، ومكانه أن يُستبدل." },
+        { "id": "blk_w1ar0002", "type": "heading", "level": 2, "text": "مم تتكوّن الصفحة؟" },
+        { "id": "blk_w1ar0003", "type": "paragraph", "text": "كل مقال عبارة عن قائمة من الكتل. قد تكون الكتلة فقرة أو عنوانًا أو اقتباسًا أو قائمة أو صورة أو تنبيهًا. ولأن المحتوى بيانات منظمة وليس كتلة واحدة من HTML، يمكن لاحقًا تحويل المقال نفسه إلى ملف PDF أو نتيجة بحث أو عنصر في تغذية دون إعادة كتابته." },
+        { "id": "blk_w1ar0004", "type": "image", "mediaId": "med_9f3k2a02", "size": "wide" },
+        { "id": "blk_w1ar0005", "type": "quote", "variant": "pull", "text": "البنية الجيدة لا تُرى؛ القارئ يلاحظ الكتابة فقط." },
+        { "id": "blk_w1ar0006", "type": "heading", "level": 2, "text": "استبدال المحتوى التجريبي" },
+        { "id": "blk_w1ar0007", "type": "list", "ordered": true, "items": [
+          "افتح المجلد `content/articles/` وعدّل الملفات التجريبية أو احذفها.",
+          "أضف مواضيعك في الملف `content/taxonomy/topics.json`.",
+          "شغّل الأمر `npm run build` وتفقّد المجلد `dist/`."
+        ] },
+        { "id": "blk_w1ar0008", "type": "callout", "tone": "tip", "title": "احذف المحتوى التجريبي قبل الإطلاق", "text": "كل عنصر يحمل العلامة `\"sample\": true` يُعرض مع تنبيه. ابنِ الموقع بالخيار `--exclude-samples` لاستبعاده من النسخة المنشورة." },
+        { "id": "blk_w1ar0009", "type": "divider" },
+        { "id": "blk_w1ar0010", "type": "paragraph", "text": "وعندما تكون جاهزًا، ابدأ بمقالك الحقيقي الأول." }
+      ]
+    }
+  }
+}

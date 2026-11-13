@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "dsp_edmag001",
+      "key": "editorial-magazine",
+      "name": { "ar": "مجلة تحريرية", "en": "Editorial Magazine" },
+      "tokens": {
+        "light": { "bg": "#ffffff", "surface": "#f5f5f3", "text": "#0a0a0a", "muted": "#595959", "border": "#d9d9d5", "primary": "#0a0a0a", "onPrimary": "#ffffff", "secondary": "#333333", "accent": "#b42318" },
+        "dark": { "bg": "#0b0b0b", "surface": "#161616", "text": "#f2f2f0", "muted": "#a8a8a4", "border": "#2e2e2e", "primary": "#f2f2f0", "onPrimary": "#0b0b0b", "secondary": "#d0d0cc", "accent": "#ff7a6b" },
+        "shared": { "radius": "2px", "radiusLarge": "4px", "sectionSpacing": "5rem", "gutter": "1.25rem" }
+      }
+    },
+    {
+      "id": "dsp_minpf001",
+      "key": "minimal-portfolio",
+      "name": { "ar": "معرض أعمال بسيط", "en": "Minimal Portfolio" },
+      "tokens": {
+        "light": { "bg": "#fafafa", "surface": "#ffffff", "text": "#111111", "muted": "#5f5f5f", "border": "#e4e4e4", "primary": "#111111", "onPrimary": "#fafafa", "secondary": "#3a3a3a", "accent": "#111111" },
+        "dark": { "bg": "#101010", "surface": "#181818", "text": "#f5f5f5", "muted": "#a6a6a6", "border": "#2a2a2a", "primary": "#f5f5f5", "onPrimary": "#101010", "secondary": "#d4d4d4", "accent": "#f5f5f5" },
+        "shared": { "radius": "0px", "radiusLarge": "0px", "sectionSpacing": "6rem", "gutter": "1.5rem" }
+      }
+    },
+    {
+      "id": "dsp_mglass01",
+      "key": "modern-glass",
+      "name": { "ar": "زجاج عصري", "en": "Modern Glass" },
+      "tokens": {
+        "light": { "bg": "#eceff6", "surface": "#ffffff", "text": "#0f172a", "muted": "#475569", "border": "#c7d0e0", "primary": "#1e1b4b", "onPrimary": "#ffffff", "secondary": "#334155", "accent": "#4338ca" },
+        "dark": { "bg": "#0a0f1f", "surface": "#131a30", "text": "#e8ecf8", "muted": "#a3aed0", "border": "#27304d", "primary": "#c7d2fe", "onPrimary": "#0a0f1f", "secondary": "#cbd5e1", "accent": "#a5b4fc" },
+        "shared": {
+          "radius": "14px", "radiusLarge": "22px", "sectionSpacing": "4.5rem", "gutter": "1.25rem",
+          "backdropLight": "radial-gradient(60rem 40rem at 15% 0%, #c7d2fe 0%, transparent 60%), radial-gradient(50rem 35rem at 100% 20%, #fbcfe8 0%, transparent 55%)",
+          "backdropDark": "radial-gradient(60rem 40rem at 15% 0%, #312e81 0%, transparent 60%), radial-gradient(50rem 35rem at 100% 20%, #4a1d4f 0%, transparent 55%)"
+        }
+      }
+    },
+    {
+      "id": "dsp_newsp001",
+      "key": "classic-newspaper",
+      "name": { "ar": "صحيفة كلاسيكية", "en": "Classic Newspaper" },
+      "tokens": {
+        "light": { "bg": "#f4efe4", "surface": "#ebe4d2", "text": "#1a1a1a", "muted": "#51493a", "border": "#c2b8a0", "primary": "#1a1a1a", "onPrimary": "#f4efe4", "secondary": "#3b362b", "accent": "#8a1c1c" },
+        "dark": { "bg": "#171512", "surface": "#221f1a", "text": "#ece5d4", "muted": "#b0a68f", "border": "#3a352c", "primary": "#ece5d4", "onPrimary": "#171512", "secondary": "#d2c9b4", "accent": "#e8806f" },
+        "shared": { "radius": "0px", "radiusLarge": "0px", "sectionSpacing": "3.5rem", "gutter": "1rem" }
+      }
+    },
+    {
+      "id": "dsp_journ001",
+      "key": "creative-journal",
+      "name": { "ar": "يوميات إبداعية", "en": "Creative Journal" },
+      "tokens": {
+        "light": { "bg": "#fffaf0", "surface": "#fff1d6", "text": "#2b2118", "muted": "#675642", "border": "#e6d5b6", "primary": "#2b2118", "onPrimary": "#fffaf0", "secondary": "#4a3a2b", "accent": "#b93e07" },
+        "dark": { "bg": "#17120d", "surface": "#221a13", "text": "#f6ead6", "muted": "#bba98f", "border": "#3a2e22", "primary": "#f6ead6", "onPrimary": "#17120d", "secondary": "#dccbb0", "accent": "#ff9a5c" },
+        "shared": { "radius": "12px", "radiusLarge": "20px", "sectionSpacing": "4.5rem", "gutter": "1.25rem" }
+      }
+    },
+    {
+      "id": "dsp_profl001",
+      "key": "professional-profile",
+      "name": { "ar": "ملف مهني", "en": "Professional Profile" },
+      "tokens": {
+        "light": { "bg": "#ffffff", "surface": "#f1f5f9", "text": "#0f172a", "muted": "#475569", "border": "#dbe2ea", "primary": "#0f3d6e", "onPrimary": "#ffffff", "secondary": "#334155", "accent": "#0f766e" },
+        "dark": { "bg": "#0b1220", "surface": "#131c2e", "text": "#e6edf7", "muted": "#9fb0c8", "border": "#25324a", "primary": "#8cc2f5", "onPrimary": "#0b1220", "secondary": "#cbd5e1", "accent": "#5eead4" },
+        "shared": { "radius": "6px", "radiusLarge": "10px", "sectionSpacing": "4rem", "gutter": "1.25rem" }
+      }
+    },
+    {
+      "id": "dsp_luxed001",
+      "key": "luxury-editorial",
+      "name": { "ar": "فخامة تحريرية", "en": "Luxury Editorial" },
+      "tokens": {
+        "light": { "bg": "#faf8f5", "surface": "#f0ebe3", "text": "#14110f", "muted": "#625a51", "border": "#d8cfc1", "primary": "#14110f", "onPrimary": "#faf8f5", "secondary": "#3d362f", "accent": "#7a5c24" },
+        "dark": { "bg": "#0d0b09", "surface": "#171410", "text": "#f3eee6", "muted": "#b3a899", "border": "#2f2a22", "primary": "#f3eee6", "onPrimary": "#0d0b09", "secondary": "#d8cfc0", "accent": "#d2b06c" },
+        "shared": { "radius": "0px", "radiusLarge": "2px", "sectionSpacing": "6rem", "gutter": "1.5rem" }
+      }
+    },
+    {
+      "id": "dsp_acadm001",
+      "key": "academic-publication",
+      "name": { "ar": "منشور أكاديمي", "en": "Academic Publication" },
+      "tokens": {
+        "light": { "bg": "#ffffff", "surface": "#f6f6f6", "text": "#1b1b1b", "muted": "#545454", "border": "#d6d6d6", "primary": "#1f3a5f", "onPrimary": "#ffffff", "secondary": "#333333", "accent": "#1f3a5f" },
+        "dark": { "bg": "#121212", "surface": "#1b1b1b", "text": "#ededed", "muted": "#aaaaaa", "border": "#303030", "primary": "#9bbbe6", "onPrimary": "#121212", "secondary": "#cfcfcf", "accent": "#9bbbe6" },
+        "shared": { "radius": "2px", "radiusLarge": "2px", "sectionSpacing": "3.5rem", "gutter": "1.25rem" }
+      }
+    }
+  ]
+}
