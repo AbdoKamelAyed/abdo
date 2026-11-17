@@ -3,22 +3,116 @@
   "languages": {
     "ar": {
       "sections": [
-        { "id": "hsc_arfeat01", "type": "featured", "enabled": true, "layout": "split", "imageRatio": "3:2", "source": { "kind": "article", "featuredOnly": true } },
-        { "id": "hsc_arlatest", "type": "articles", "enabled": true, "title": "أحدث المقالات", "layout": "grid", "limit": 6, "imageRatio": "3:2" },
-        { "id": "hsc_arprojs1", "type": "projects", "enabled": true, "title": "أحدث الأعمال", "layout": "list", "limit": 3, "imageRatio": "4:3" },
-        { "id": "hsc_artopics", "type": "topics", "enabled": true, "title": "مواضيع مختارة", "limit": 6 },
-        { "id": "hsc_arhighl1", "type": "highlights", "enabled": true, "title": "لمحات مهنية" },
-        { "id": "hsc_arfollo1", "type": "follow", "enabled": true, "title": "تابعوا", "intro": "للتواصل ومتابعة جديد المنشورات." }
+        {
+          "id": "hsc_arfeat01",
+          "type": "featured",
+          "enabled": true,
+          "layout": "split",
+          "imageRatio": "3:2",
+          "source": {
+            "kind": "article",
+            "featuredOnly": true
+          }
+        },
+        {
+          "id": "hsc_arlatest",
+          "type": "articles",
+          "enabled": true,
+          "title": "أحدث المقالات",
+          "layout": "grid",
+          "limit": 6,
+          "imageRatio": "3:2"
+        },
+        {
+          "id": "hsc_arprojs1",
+          "type": "projects",
+          "enabled": true,
+          "title": "أحدث الأعمال",
+          "layout": "list",
+          "limit": 3,
+          "imageRatio": "4:3"
+        },
+        {
+          "id": "hsc_artopics",
+          "type": "topics",
+          "enabled": true,
+          "title": "مواضيع مختارة",
+          "limit": 6
+        },
+        {
+          "id": "hsc_arhighl1",
+          "type": "highlights",
+          "enabled": true,
+          "title": "لمحات مهنية"
+        },
+        {
+          "id": "hsc_arfollo1",
+          "type": "follow",
+          "enabled": true,
+          "title": "تابعوا",
+          "intro": "للتواصل ومتابعة جديد المنشورات."
+        }
       ]
     },
     "en": {
       "sections": [
-        { "id": "hsc_enfeat01", "type": "featured", "enabled": true, "layout": "overlay", "imageRatio": "16:9", "source": { "kind": "any", "featuredOnly": true } },
-        { "id": "hsc_enlatest", "type": "articles", "enabled": true, "title": "Latest articles", "layout": "editorial", "limit": 5, "imageRatio": "3:2" },
-        { "id": "hsc_entopics", "type": "topics", "enabled": true, "title": "Featured topics", "limit": 6 },
-        { "id": "hsc_enprojs1", "type": "projects", "enabled": true, "title": "Selected projects", "layout": "grid", "limit": 3, "imageRatio": "4:3" },
-        { "id": "hsc_enhighl1", "type": "highlights", "enabled": true, "title": "Professional highlights" },
-        { "id": "hsc_enfollo1", "type": "follow", "enabled": true, "title": "Follow", "intro": "Get in touch or follow new publications." }
+        {
+          "id": "hsc_enfeat01",
+          "type": "featured",
+          "enabled": true,
+          "layout": "overlay",
+          "imageRatio": "16:9",
+          "source": {
+            "kind": "any",
+            "featuredOnly": true
+          }
+        },
+        {
+          "id": "hsc_enlatest",
+          "type": "articles",
+          "enabled": true,
+          "title": "Latest articles",
+          "layout": "editorial",
+          "limit": 5,
+          "imageRatio": "3:2"
+        },
+        {
+          "id": "hsc_entopics",
+          "type": "topics",
+          "enabled": true,
+          "title": "Featured topics",
+          "limit": 6
+        },
+        {
+          "id": "hsc_enprojs1",
+          "type": "projects",
+          "enabled": true,
+          "title": "Selected projects",
+          "layout": "grid",
+          "limit": 3,
+          "imageRatio": "4:3"
+        },
+        {
+          "id": "hsc_enhighl1",
+          "type": "highlights",
+          "enabled": true,
+          "title": "Professional highlights"
+        },
+        {
+          "id": "hsc_enfollo1",
+          "type": "follow",
+          "enabled": true,
+          "title": "Follow",
+          "intro": "Get in touch or follow new publications."
+        },
+        {
+          "id": "hsc_fz44d2u7",
+          "type": "articles",
+          "enabled": true,
+          "layout": "editorial",
+          "limit": 5,
+          "imageRatio": "3:2"
+        }
       ]
     }
   }
