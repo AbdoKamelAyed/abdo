@@ -3,12 +3,18 @@
   "id": "art_worklog1",
   "status": "published",
   "createdAt": "2026-10-14T08:00:00+02:00",
-  "updatedAt": "2026-10-15T08:00:00+02:00",
+  "updatedAt": "2026-11-17T08:21:39Z",
   "publishedAt": "2026-10-15T08:00:00+02:00",
   "authorId": "aut_h4x9k2m1",
   "template": "editorial",
-  "topicIds": ["top_writ0001", "top_ideas001"],
-  "tagIds": ["tag_flow0001", "tag_notes001"],
+  "topicIds": [
+    "top_writ0001",
+    "top_ideas001"
+  ],
+  "tagIds": [
+    "tag_flow0001",
+    "tag_notes001"
+  ],
   "sample": true,
   "translations": {
     "en": {
@@ -17,15 +23,47 @@
       "title": "Notes on keeping a work log",
       "excerpt": "A work log is a cheap system: one file, one line per entry, written at the end of the day. Its value shows up weeks later.",
       "body": [
-        { "id": "blk_k1en0001", "type": "paragraph", "style": "lead", "text": "A work log is a cheap system: one file, one line per entry, written at the end of the day." },
-        { "id": "blk_k1en0002", "type": "heading", "level": 2, "text": "What goes in" },
-        { "id": "blk_k1en0003", "type": "list", "items": [
-          "What was done.",
-          "What was decided, and why.",
-          "What is blocked, and by whom."
-        ] },
-        { "id": "blk_k1en0004", "type": "paragraph", "text": "The value shows up weeks later, when a decision needs context that nobody remembers." },
-        { "id": "blk_k1en0005", "type": "callout", "tone": "note", "title": "Sample content in English only", "text": "This article has no Arabic version, so the language switcher on this page falls back to the Arabic home page." }
+        {
+          "id": "blk_k1en0001",
+          "type": "paragraph",
+          "style": "lead",
+          "text": "A work log is a cheap system: one file, one line per entry, written at the end of the day."
+        },
+        {
+          "id": "blk_k1en0002",
+          "type": "heading",
+          "level": 2,
+          "text": "What goes in"
+        },
+        {
+          "id": "blk_k1en0003",
+          "type": "list",
+          "items": [
+            "What was done.",
+            "What was decided, and why.",
+            "What is blocked, and by whom."
+          ]
+        },
+        {
+          "id": "blk_k1en0004",
+          "type": "paragraph",
+          "text": "The value shows up weeks later, when a decision needs context that nobody remembers."
+        },
+        {
+          "id": "blk_k1en0005",
+          "type": "callout",
+          "tone": "note",
+          "title": "Sample content in English only",
+          "text": "This article has no Arabic version, so the language switcher on this page falls back to the Arabic home page."
+        },
+        {
+          "id": "blk_36d5ctfl",
+          "type": "divider"
+        },
+        {
+          "id": "blk_xwx1yjt9",
+          "type": "author"
+        }
       ]
     }
   }
